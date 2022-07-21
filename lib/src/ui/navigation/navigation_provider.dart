@@ -5,6 +5,7 @@ import 'package:feather/src/ui/forecast/weather_forecast_screen.dart';
 import 'package:feather/src/ui/main/main_screen.dart';
 import 'package:feather/src/ui/about/about_screen.dart';
 import 'package:feather/src/ui/settings/settings_screen.dart';
+import 'package:feather/src/ui/splash/splash.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class NavigationProvider {
 
   final _mainScreenHandler = Handler(
       handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
-    return const MainScreen();
+    return const Splash();
   });
 
   final _forecastScreenHandler = Handler(

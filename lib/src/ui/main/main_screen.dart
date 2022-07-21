@@ -327,9 +327,9 @@ class _MainScreenState extends State<MainScreen> {
     menuList.add(PopupMenuElement(
         key: const Key("menu_overflow_settings"),
         title: applicationLocalization.settings));
-    menuList.add(PopupMenuElement(
-        key: const Key("menu_overflow_about"),
-        title: applicationLocalization.about));
+    // menuList.add(PopupMenuElement(
+    //     key: const Key("menu_overflow_about"),
+    //     title: applicationLocalization.about));
     return menuList;
   }
 

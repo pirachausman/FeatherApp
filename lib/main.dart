@@ -19,7 +19,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-void main() => runApp(const FeatherApp());
+void main() => runApp(
+
+    const FeatherApp());
 
 class FeatherApp extends StatefulWidget {
   const FeatherApp({Key? key}) : super(key: key);
@@ -77,6 +79,7 @@ class _FeatherAppState extends State<FeatherApp> {
         )
       ],
       child: MaterialApp(
+
         debugShowCheckedModeBanner: false,
         navigatorKey: _navigatorKey,
         theme: _configureThemeData(),
@@ -98,11 +101,12 @@ class _FeatherAppState extends State<FeatherApp> {
   ThemeData _configureThemeData() {
     return ThemeData(
       textTheme: const TextTheme(
-        headline5: TextStyle(fontSize: 60.0, color: Colors.white),
-        headline6: TextStyle(fontSize: 35, color: Colors.white),
-        subtitle2: TextStyle(fontSize: 20, color: Colors.white),
-        bodyText2: TextStyle(fontSize: 15, color: Colors.white),
-        bodyText1: TextStyle(fontSize: 12, color: Colors.white),
+
+        headline5: TextStyle(fontSize: 60.0, color: Colors.white, fontFamily: 'Futura'),
+        headline6: TextStyle(fontSize: 35, color: Colors.white, fontFamily: 'Futura'),
+        subtitle2: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'Futura'),
+        bodyText2: TextStyle(fontSize: 15, color: Colors.white, fontFamily: 'Futura'),
+        bodyText1: TextStyle(fontSize: 12, color: Colors.white, fontFamily: 'Futura'),
       ),
     );
   }

@@ -102,11 +102,11 @@ class _FeatherAppState extends State<FeatherApp> {
     return ThemeData(
       textTheme: const TextTheme(
 
-        headline5: TextStyle(fontSize: 60.0, color: Colors.white, fontFamily: 'Futura'),
-        headline6: TextStyle(fontSize: 35, color: Colors.white, fontFamily: 'Futura'),
-        subtitle2: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'Futura'),
-        bodyText2: TextStyle(fontSize: 15, color: Colors.white, fontFamily: 'Futura'),
-        bodyText1: TextStyle(fontSize: 12, color: Colors.white, fontFamily: 'Futura'),
+        headline5: TextStyle(fontSize: 60.0, color: Colors.white, fontFamily: 'Montserrat'),
+        headline6: TextStyle(fontSize: 35, color: Colors.white, fontFamily: 'Montserrat'),
+        subtitle2: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'Montserrat'),
+        bodyText2: TextStyle(fontSize: 15, color: Colors.white, fontFamily: 'Montserrat'),
+        bodyText1: TextStyle(fontSize: 12, color: Colors.white, fontFamily: 'Montserrat'),
       ),
     );
   }

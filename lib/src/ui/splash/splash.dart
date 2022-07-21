@@ -37,6 +37,10 @@ class _SplashState extends State<Splash> {
               )
           ),
         ),
+        Container(
+          alignment: Alignment.center,
+          child: Text('Weatherly', style: TextStyle(fontFamily: 'Futura'),),
+        )
 
       ],
     );

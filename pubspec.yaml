@@ -44,6 +44,7 @@ flutter:
     - assets/
 
   fonts:
-    - family: Futura
+    - family: Futura , Montserrat
       fonts:
-        - asset: assets/fonts/futuramediumitalicfont.ttf
+        - asset: assets/futura_font/futur.ttf
+        - asset: assets/mon_font/Montserrat-Black.otf

@@ -6,22 +6,20 @@ import 'package:feather/src/data/repository/local/storage_provider.dart';
 import 'package:feather/src/data/repository/local/weather_local_repository.dart';
 import 'package:feather/src/data/repository/remote/weather_api_provider.dart';
 import 'package:feather/src/data/repository/remote/weather_remote_repository.dart';
-import 'package:feather/src/ui/about/bloc/about_screen_bloc.dart';
 import 'package:feather/src/ui/app/app_bloc.dart';
 import 'package:feather/src/ui/main/bloc/main_screen_bloc.dart';
 import 'package:feather/src/ui/navigation/bloc/navigation_bloc.dart';
 import 'package:feather/src/ui/navigation/navigation_provider.dart';
 import 'package:feather/src/ui/settings/bloc/settings_screen_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-void main() => runApp(
-
-    const FeatherApp());
+void main() => runApp(const FeatherApp());
 
 class FeatherApp extends StatefulWidget {
   const FeatherApp({Key? key}) : super(key: key);
@@ -39,14 +37,16 @@ class _FeatherAppState extends State<FeatherApp> {
   final WeatherRemoteRepository _weatherRemoteRepository =
       WeatherRemoteRepository(WeatherApiProvider());
   late ApplicationLocalRepository _applicationLocalRepository;
+  final WidgetsBinding widgetsBinding =
+      WidgetsFlutterBinding.ensureInitialized();
 
   @override
   void initState() {
     super.initState();
     _weatherLocalRepository = WeatherLocalRepository(_storageManager);
     _applicationLocalRepository = ApplicationLocalRepository(_storageManager);
-    WidgetsFlutterBinding.ensureInitialized();
-    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual);
+    FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+    initialization();
     _navigation.defineRoutes();
     _configureTimeago();
   }
@@ -71,15 +71,11 @@ class _FeatherAppState extends State<FeatherApp> {
             _applicationLocalRepository,
           ),
         ),
-        BlocProvider<AboutScreenBloc>(
-          create: (context) => AboutScreenBloc(),
-        ),
         BlocProvider<SettingsScreenBloc>(
           create: (context) => SettingsScreenBloc(_applicationLocalRepository),
         )
       ],
       child: MaterialApp(
-
         debugShowCheckedModeBanner: false,
         navigatorKey: _navigatorKey,
         theme: _configureThemeData(),
@@ -100,18 +96,33 @@ class _FeatherAppState extends State<FeatherApp> {
 
   ThemeData _configureThemeData() {
     return ThemeData(
-      textTheme: const TextTheme(
-
-        headline5: TextStyle(fontSize: 60.0, color: Colors.white, fontFamily: 'Montserrat'),
-        headline6: TextStyle(fontSize: 35, color: Colors.white, fontFamily: 'Montserrat'),
-        subtitle2: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'Montserrat'),
-        bodyText2: TextStyle(fontSize: 15, color: Colors.white, fontFamily: 'Montserrat'),
-        bodyText1: TextStyle(fontSize: 12, color: Colors.white, fontFamily: 'Montserrat'),
+      textTheme: TextTheme(
+        headline5: GoogleFonts.montserrat(
+          textStyle: const TextStyle(fontSize: 60.0, color: Colors.white),
+        ),
+        headline6: GoogleFonts.montserrat(
+          textStyle: const TextStyle(fontSize: 35, color: Colors.white),
+        ),
+        subtitle2: GoogleFonts.montserrat(
+          textStyle: const TextStyle(fontSize: 20, color: Colors.white),
+        ),
+        bodyText2: GoogleFonts.montserrat(
+          textStyle: const TextStyle(fontSize: 15, color: Colors.white),
+        ),
+        bodyText1: GoogleFonts.montserrat(
+          textStyle: const TextStyle(fontSize: 12, color: Colors.white),
+        ),
       ),
     );
   }
 
   void _configureTimeago() {
     timeago.setLocaleMessages("pl", timeago.PlMessages());
+  }
+
+  void initialization() async {
+    Future.delayed(const Duration(seconds: 4), () {
+      FlutterNativeSplash.remove();
+    });
   }
 }

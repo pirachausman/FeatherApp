@@ -26,6 +26,8 @@ dependencies:
   fluro: ^2.0.3
   timeago: ^3.0.2
   system_settings: ^2.1.0
+  flutter_native_splash: ^2.2.5
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -42,9 +44,3 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-
-  fonts:
-    - family: Futura , Montserrat
-      fonts:
-        - asset: assets/futura_font/futur.ttf
-        - asset: assets/mon_font/Montserrat-Black.otf

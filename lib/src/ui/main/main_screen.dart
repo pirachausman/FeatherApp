@@ -68,10 +68,10 @@ class _MainScreenState extends State<MainScreen> {
                       _buildLocationServiceDisabledWidget()
                     else if (state is PermissionNotGrantedMainScreenState)
                       _buildPermissionNotGrantedWidget(
-                          state.permanentlyDeniedPermission)
+                          state.permanentlyDeniedPermission,)
                     else if (state is SuccessLoadMainScreenState)
                       _buildWeatherWidget(state.weatherResponse,
-                          state.weatherForecastListResponse)
+                          state.weatherForecastListResponse,)
                     else if (state is FailedLoadMainScreenState)
                       _buildFailedToLoadDataWidget(state.applicationError)
                     else
@@ -88,7 +88,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Widget _buildWeatherWidget(WeatherResponse weatherResponse,
-      WeatherForecastListResponse weatherForecastListResponse) {
+      WeatherForecastListResponse weatherForecastListResponse,) {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Container(
@@ -118,7 +118,7 @@ class _MainScreenState extends State<MainScreen> {
               SizedBox(
                 height: Dimensions.weatherMainWidgetSwiperHeight,
                 child: _buildSwiperWidget(
-                    weatherResponse, weatherForecastListResponse),
+                    weatherResponse, weatherForecastListResponse,),
               )
             ],
           ),
@@ -128,12 +128,12 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Widget _buildSwiperWidget(WeatherResponse weatherResponse,
-      WeatherForecastListResponse forecastListResponse) {
+      WeatherForecastListResponse forecastListResponse,) {
     return Swiper(
       itemBuilder: (BuildContext context, int index) {
         if (index == 0) {
           return _getPage(
-              Ids.mainWeatherPage, weatherResponse, forecastListResponse);
+              Ids.mainWeatherPage, weatherResponse, forecastListResponse,);
         } else {
           return _getPage(
             Ids.weatherMainSunPathPage,
@@ -154,7 +154,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Widget _getPage(String key, WeatherResponse response,
-      WeatherForecastListResponse weatherForecastListResponse) {
+      WeatherForecastListResponse weatherForecastListResponse,) {
     if (_pageMap.containsKey(key)) {
       return _pageMap[key] ?? const SizedBox();
     } else {
@@ -260,7 +260,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
           ),
-        ]);
+        ],);
   }
 
   Widget _buildFailedToLoadDataWidget(ApplicationError error) {
@@ -326,10 +326,11 @@ class _MainScreenState extends State<MainScreen> {
     final List<PopupMenuElement> menuList = [];
     menuList.add(PopupMenuElement(
         key: const Key("menu_overflow_settings"),
-        title: applicationLocalization.settings));
+        title: applicationLocalization.settings,),);
     // menuList.add(PopupMenuElement(
     //     key: const Key("menu_overflow_about"),
-    //     title: applicationLocalization.about));
+    //     title: applicationLocalization.about)
+    //);
     return menuList;
   }
 
@@ -340,7 +341,7 @@ class _MainScreenState extends State<MainScreen> {
           (_mainScreenBloc.state as SuccessLoadMainScreenState).weatherResponse;
       final LinearGradient gradient = WidgetHelper.getGradient(
           sunriseTime: weatherResponse.system!.sunrise,
-          sunsetTime: weatherResponse.system!.sunset);
+          sunsetTime: weatherResponse.system!.sunset,);
       startGradientColors = gradient.colors;
     }
 
